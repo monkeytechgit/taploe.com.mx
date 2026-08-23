@@ -18,15 +18,15 @@ Deno.serve(async (request) => {
   const body = await request.text();
 
   if (!signature || !webhookSecret) {
-    return new Response('Missing Stripe signature or webhook secret', { status: 400 });
+    return new Response('No se pudo validar la solicitud.', { status: 400 });
   }
 
   let event: Stripe.Event;
   try {
     event = await stripe.webhooks.constructEventAsync(body, signature, webhookSecret);
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Invalid webhook signature';
-    return new Response(`Webhook signature error: ${message}`, { status: 400 });
+    console.error('taploe_webhook_signature_error', error);
+    return new Response('No se pudo validar la solicitud.', { status: 400 });
   }
 
   if (event.type === 'checkout.session.completed') {
@@ -73,7 +73,7 @@ Deno.serve(async (request) => {
     });
   }
 
-  return new Response(JSON.stringify({ received: true }), {
+  return new Response(JSON.stringify({ recibido: true }), {
     headers: { 'Content-Type': 'application/json' },
   });
 });

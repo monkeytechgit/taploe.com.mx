@@ -21,6 +21,8 @@ const json = (body: unknown, status = 200) => new Response(JSON.stringify(body),
   headers: { ...corsHeaders, 'Content-Type': 'application/json' },
 });
 
+const publicCompleteError = 'No pudimos confirmar tu pedido en este momento. Si tu compra fue realizada, contáctanos para ayudarte.';
+
 type CartItem = {
   id: string;
   product: string;
@@ -64,7 +66,7 @@ Deno.serve(async (request) => {
     const currency = String(payload.currency || 'MXN').toUpperCase();
 
     if (!sessionId || !checkoutRef || !cart.length) {
-      return json({ error: 'Falta sesión, referencia o carrito' }, 400);
+      return json({ error: publicCompleteError }, 400);
     }
 
     const session = await stripe.checkout.sessions.retrieve(sessionId, {
@@ -72,10 +74,10 @@ Deno.serve(async (request) => {
     });
 
     if (session.client_reference_id !== checkoutRef) {
-      return json({ error: 'La referencia de compra no coincide con la sesión de Stripe' }, 409);
+      return json({ error: publicCompleteError }, 409);
     }
     if (session.payment_status !== 'paid') {
-      return json({ error: 'La sesión de Stripe no está pagada' }, 402);
+      return json({ error: 'Tu compra todavía no aparece como confirmada. Espera unos momentos e intenta actualizar la página.' }, 402);
     }
 
     const { data: existing } = await supabase
@@ -103,7 +105,7 @@ Deno.serve(async (request) => {
         currency,
         subtotal_amount: subtotal,
         total_amount: total || subtotal,
-        notes: 'Orden pagada creada después de Stripe Checkout',
+        notes: 'Orden pagada creada después del pago seguro',
         ecommerce_source: 'web_cart',
         market,
         locale,
@@ -201,7 +203,7 @@ Deno.serve(async (request) => {
 
     return json({ ok: true, order_id: orderRows.id });
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Error inesperado';
-    return json({ error: message }, 500);
+    console.error('taploe_checkout_complete_error', error);
+    return json({ error: publicCompleteError }, 500);
   }
 });

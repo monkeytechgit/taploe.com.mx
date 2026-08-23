@@ -6,10 +6,10 @@
   const cartKey = config.cartStorageKey || `taploeCart:${market}`;
   const pendingCheckoutKey = config.pendingCheckoutStorageKey || `taploePendingCheckout:${market}`;
   const copy = {
-    processing: 'Confirmando pago y guardando tu orden...',
+    processing: 'Confirmando tu compra y guardando tu pedido...',
     saved: 'Orden guardada. Recibimos tu compra y continuaremos con la producción.',
-    missing: 'El pago fue recibido, pero este navegador ya no tiene la configuración del carrito. Contacta a Taploe con tu recibo de Stripe.',
-    error: 'El pago fue recibido, pero no pudimos guardar la configuración de la orden. Contacta a Taploe con tu recibo de Stripe.'
+    missing: 'Recibimos tu compra, pero necesitamos confirmar algunos detalles de tu pedido. Contáctanos para ayudarte.',
+    error: 'Recibimos tu compra, pero no pudimos terminar el registro del pedido en este momento. Contáctanos para ayudarte.'
   };
   const status = document.querySelector('[data-checkout-save-status]');
   const setStatus = (message) => {

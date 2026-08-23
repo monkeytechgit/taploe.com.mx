@@ -207,7 +207,7 @@
         source: form.dataset.quoteSource || form.dataset.quoteMode || 'quote_form'
       }
     };
-    if (!supabaseReady()) throw new Error('Supabase is not configured.');
+    if (!supabaseReady()) throw new Error('La solicitud no está disponible en este momento.');
     submit.disabled = true;
     form.classList.remove('is-success', 'is-error');
     panel?.classList.remove('is-success', 'is-error');

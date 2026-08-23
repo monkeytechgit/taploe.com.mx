@@ -31,6 +31,9 @@ const json = (body: unknown, status = 200) => new Response(JSON.stringify(body),
   headers: { ...corsHeaders, 'Content-Type': 'application/json' },
 });
 
+const publicCheckoutError = 'No pudimos preparar el pago seguro en este momento. Intenta de nuevo o contáctanos para ayudarte.';
+const publicUnavailableError = 'Este producto no está disponible temporalmente. Intenta de nuevo más tarde o contáctanos para ayudarte.';
+
 const cleanUrl = (value: string) => {
   try {
     const url = new URL(value);
@@ -57,12 +60,12 @@ Deno.serve(async (request) => {
     const pageBase = cleanUrl(String(payload.page_url || '')) || 'https://www.taploe.com.mx';
 
     if (!checkoutRef || !cart.length) {
-      return json({ error: 'Falta la referencia de compra o el carrito' }, 400);
+      return json({ error: 'Tu carrito no está listo para pago. Revisa tus productos e intenta de nuevo.' }, 400);
     }
 
     const requestedPrices = [...new Set(cart.map((item) => item.stripePriceId).filter(Boolean))] as string[];
     if (!requestedPrices.length) {
-      return json({ error: 'El carrito no tiene precios de Stripe' }, 400);
+      return json({ error: publicUnavailableError }, 400);
     }
 
     const { data: validPrices, error: priceError } = await supabase
@@ -77,7 +80,7 @@ Deno.serve(async (request) => {
     const validPriceIds = new Set((validPrices || []).map((price) => price.stripe_price_id));
     const invalidPrice = requestedPrices.find((priceId) => !validPriceIds.has(priceId));
     if (invalidPrice) {
-      return json({ error: `Precio no válido para el mercado: ${invalidPrice}` }, 400);
+      return json({ error: publicUnavailableError }, 400);
     }
 
     const lineItems = cart.map((item) => ({
@@ -105,7 +108,7 @@ Deno.serve(async (request) => {
 
     return json({ id: session.id, url: session.url });
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Error inesperado';
-    return json({ error: message }, 500);
+    console.error('taploe_checkout_create_error', error);
+    return json({ error: publicCheckoutError }, 500);
   }
 });

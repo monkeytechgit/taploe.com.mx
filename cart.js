@@ -20,8 +20,8 @@
     secure: 'Pago seguro. Los datos de envío se solicitan en el siguiente paso.',
     drawerTitle: 'Tu carrito',
     logoUploadError: (product) => `No se pudo subir el logo de ${product}.`,
-    orderError: 'No se pudo crear la orden en Supabase.',
-    itemsError: 'No se pudieron guardar los productos de la orden.',
+    orderError: 'No pudimos preparar tu pedido en este momento.',
+    itemsError: 'No pudimos guardar los productos de tu pedido.',
     pieces: (quantity) => quantity === 1 ? 'pieza' : 'piezas',
     each: 'c/u',
     remove: 'Quitar',
@@ -29,9 +29,10 @@
     package: 'Paquete',
     links: 'Enlaces',
     design: 'Diseño',
-    stripeLoad: 'No se pudo cargar el pago. Revisa tu conexión.',
-    supabaseConfig: 'Supabase no está configurado correctamente en ecommerce-config.js.',
-    missingPrice: (product) => `Falta price_id para ${product}.`,
+    stripeLoad: 'No pudimos abrir el pago seguro. Intenta de nuevo o contáctanos para ayudarte.',
+    supabaseConfig: 'No pudimos preparar el pago en este momento. Intenta de nuevo o contáctanos para ayudarte.',
+    missingPrice: () => 'Este producto no está disponible temporalmente. Intenta de nuevo más tarde o contáctanos para ayudarte.',
+    checkoutUnavailable: 'Este producto no está disponible temporalmente. Intenta de nuevo más tarde o contáctanos para ayudarte.',
     preparing: 'Preparando pago...'
   };
   const money = (value) => new Intl.NumberFormat(locale, {
@@ -293,11 +294,11 @@
         })
       });
       const result = await response.json().catch(() => ({}));
-      if (!response.ok || !result.url) throw new Error(result.error || copy.stripeLoad);
+      if (!response.ok || !result.url) throw new Error(copy.checkoutUnavailable);
       window.location.href = result.url;
     } catch (error) {
       checkoutButton.disabled = false;
-      if (status) status.textContent = error.message || copy.stripeLoad;
+      if (status) status.textContent = copy.checkoutUnavailable;
     }
   };
 
