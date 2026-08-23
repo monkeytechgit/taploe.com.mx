@@ -5,53 +5,6 @@
   const cartKey = window.TaploeEcommerce?.cartStorageKey || `taploeCart:${market}`;
   const appLoginUrl = window.TaploeEcommerce?.appLoginUrl || `https://app.taploe.com/login?locale=${locale}`;
 
-  const setupGlobalMotion = () => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!reduceMotion && 'IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.01 });
-      const revealElement = (element, index = 0) => {
-        if (!element || ['SCRIPT', 'STYLE', 'NOSCRIPT'].includes(element.tagName) || element.classList.contains('taploe-reveal')) return;
-        element.classList.add('taploe-reveal');
-        element.style.transitionDelay = `${Math.min(index * 4, 160)}ms`;
-        observer.observe(element);
-      };
-      const revealTree = (root) => {
-        if (!(root instanceof Element)) return;
-        revealElement(root);
-        root.querySelectorAll('*').forEach((element, index) => revealElement(element, index));
-      };
-      document.body.querySelectorAll('*').forEach((element, index) => {
-        revealElement(element, index);
-      });
-      const mutationObserver = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          mutation.addedNodes.forEach(revealTree);
-        });
-      });
-      mutationObserver.observe(document.body, { childList: true, subtree: true });
-    }
-
-    document.addEventListener('click', (event) => {
-      const link = event.target.closest('a[href]');
-      if (!link || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      if (link.target && link.target !== '_self') return;
-      const url = new URL(link.href, window.location.href);
-      if (url.origin !== window.location.origin || url.pathname === window.location.pathname && url.hash) return;
-      document.body.classList.add('page-is-leaving');
-      event.preventDefault();
-      setTimeout(() => {
-        window.location.href = url.href;
-      }, reduceMotion ? 0 : 180);
-    });
-  };
-
   const setupProductHoverMenus = () => {
     document.querySelectorAll('.nav-dropdown').forEach((dropdown) => {
       let closeTimer;
@@ -70,7 +23,6 @@
     });
   };
 
-  setupGlobalMotion();
   setupProductHoverMenus();
 
   document.querySelectorAll('a[href="iniciar-sesion.html"], a[href="login.html"]').forEach((link) => {
@@ -122,17 +74,6 @@
   updateCartBadges();
   window.addEventListener('storage', updateCartBadges);
   window.addEventListener('taploe:cart-updated', updateCartBadges);
-
-  document.querySelectorAll('[data-autoplay-video]').forEach((video) => {
-    video.volume = Number(video.dataset.volume || 0.85);
-    const playAttempt = video.play();
-    if (playAttempt) {
-      playAttempt.catch(() => {
-        video.muted = true;
-        video.play().catch(() => {});
-      });
-    }
-  });
 
   const menuButton = document.querySelector(".menu-toggle");
   const mobileNav = document.querySelector("#mobile-navigation, .mobile-nav");

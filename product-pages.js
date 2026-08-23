@@ -13,24 +13,14 @@
       video.className = 'product-gallery__main product-gallery__video';
       video.setAttribute('data-gallery-main', '');
       video.src = source;
-      video.autoplay = true;
-      video.loop = true;
       video.playsInline = true;
       video.controls = true;
-      video.preload = 'auto';
-      video.volume = 1;
+      video.preload = 'metadata';
       video.setAttribute('aria-label', button.dataset.galleryAlt || '');
       if (current) {
         current.replaceWith(video);
       } else {
         stage.appendChild(video);
-      }
-      const playAttempt = video.play();
-      if (playAttempt) {
-        playAttempt.catch(() => {
-          video.muted = true;
-          video.play().catch(() => {});
-        });
       }
     } else {
       const image = document.createElement('img');
