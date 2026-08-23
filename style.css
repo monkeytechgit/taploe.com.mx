@@ -6126,38 +6126,6 @@ body.cart-is-open {
   max-width: 1160px;
 }
 
-.mexico-seo-section {
-  background: #fbfbfc;
-}
-
-.mexico-seo-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.mexico-seo-grid > div {
-  display: grid;
-  gap: 8px;
-  padding: 18px;
-  border: 1px solid var(--color-line);
-  border-radius: 12px;
-  background: var(--color-white);
-}
-
-.mexico-seo-grid h3 {
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.15;
-}
-
-.mexico-seo-grid p {
-  margin: 0;
-  color: var(--color-muted);
-  font-size: 15px;
-  line-height: 1.5;
-}
-
 .related-products {
   padding-bottom: 90px;
 }
@@ -6262,9 +6230,6 @@ body.cart-is-open {
     grid-template-columns: 1fr;
   }
 
-  .mexico-seo-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 640px) {
@@ -7506,10 +7471,6 @@ h3,
   font-size: clamp(28px, 3vw, 44px);
 }
 
-.mexico-seo-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
 @media (max-width: 1180px) {
   .container {
     width: min(calc(100% - 44px), var(--container));
@@ -7564,8 +7525,7 @@ h3,
   }
 
   .product-included__grid,
-  .quick-benefits,
-  .mexico-seo-grid {
+  .quick-benefits {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -7665,8 +7625,7 @@ h3,
   }
 
   .product-included__grid,
-  .quick-benefits,
-  .mexico-seo-grid {
+  .quick-benefits {
     grid-template-columns: 1fr;
   }
 
