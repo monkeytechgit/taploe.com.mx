@@ -13,15 +13,20 @@
       video.className = 'product-gallery__main product-gallery__video';
       video.setAttribute('data-gallery-main', '');
       video.src = source;
+      if (button.dataset.galleryPoster) video.poster = button.dataset.galleryPoster;
       video.playsInline = true;
       video.controls = true;
-      video.preload = 'metadata';
+      video.preload = 'auto';
+      video.muted = false;
+      video.volume = 1;
       video.setAttribute('aria-label', button.dataset.galleryAlt || '');
       if (current) {
         current.replaceWith(video);
       } else {
         stage.appendChild(video);
       }
+      const playAttempt = video.play();
+      if (playAttempt) playAttempt.catch(() => {});
     } else {
       const image = document.createElement('img');
       image.className = 'product-gallery__main';

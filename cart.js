@@ -155,7 +155,7 @@
         <div class="cart-item__actions">
           <div class="cart-quantity-control" aria-label="Cambiar cantidad">
             <button type="button" data-cart-quantity-action="decrease" data-cart-quantity-index="${index}" ${canDecrease ? '' : 'disabled'} aria-label="Reducir cantidad">−</button>
-            <span>${item.quantity} ${copy.pieces(item.quantity)}</span>
+            <span>${item.quantity}</span>
             <button type="button" data-cart-quantity-action="increase" data-cart-quantity-index="${index}" aria-label="Aumentar cantidad">+</button>
           </div>
           <button class="cart-item__remove" type="button" data-remove-index="${index}" aria-label="${copy.remove}">
