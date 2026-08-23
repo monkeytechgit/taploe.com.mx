@@ -12,7 +12,7 @@
     empty: 'Tu carrito está vacío.',
     subtotal: 'Subtotal',
     shipping: 'Envío',
-    shippingNote: 'Envío gratis',
+    shippingNote: 'Envío gratis a todo México',
     total: 'Total',
     buy: 'Finalizar compra',
     viewCart: 'Ver carrito',

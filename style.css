@@ -3857,7 +3857,7 @@ a:focus-visible,
 }
 
 .product-rating::after {
-  content: "Envío gratis";
+  content: "Envío gratis a todo México";
   flex: 0 0 100%;
   min-height: 22px;
   display: inline-flex;
