@@ -1,14 +1,8 @@
 import Stripe from 'https://esm.sh/stripe@14.25.0?target=deno';
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.4';
 
 const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') || '', {
   apiVersion: '2024-06-20',
 });
-
-const supabase = createClient(
-  Deno.env.get('SUPABASE_URL') || '',
-  Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') || '',
-);
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -33,6 +27,26 @@ const json = (body: unknown, status = 200) => new Response(JSON.stringify(body),
 
 const publicCheckoutError = 'No pudimos preparar el pago seguro en este momento. Intenta de nuevo o contáctanos para ayudarte.';
 const publicUnavailableError = 'Este producto no está disponible temporalmente. Intenta de nuevo más tarde o contáctanos para ayudarte.';
+const allowedStripePriceIds = new Set([
+  'price_1U7fXIE9Iq6fzuQIWgd9UP52',
+  'price_1U7fYjE9Iq6fzuQI8c9m6T75',
+  'price_1U7fc7E9Iq6fzuQIvpAYImou',
+  'price_1U7fc7E9Iq6fzuQI7xiu5UdH',
+  'price_1U7fc7E9Iq6fzuQIPTVWWjsk',
+  'price_1U7fc7E9Iq6fzuQIlatja3Ta',
+  'price_1U7fenE9Iq6fzuQILQFwMifL',
+  'price_1U7ffeE9Iq6fzuQIr0zh6LZ6',
+  'price_1U7ffeE9Iq6fzuQI3FNKgorA',
+  'price_1U7ffeE9Iq6fzuQIIawQg4f6',
+  'price_1U7fssE9Iq6fzuQI044xCmvJ',
+  'price_1U7ftxE9Iq6fzuQI1PNkZbq3',
+  'price_1U7ftxE9Iq6fzuQIRipyfrYr',
+  'price_1U7ftxE9Iq6fzuQI0ut7zIBH',
+  'price_1U7fvhE9Iq6fzuQIxrtLZ39Q',
+  'price_1U7fwiE9Iq6fzuQIltCEiydc',
+  'price_1U7fwiE9Iq6fzuQIO04kwHqp',
+  'price_1U7fwiE9Iq6fzuQIy9a2uaPc',
+]);
 
 const cleanUrl = (value: string) => {
   try {
@@ -68,18 +82,9 @@ Deno.serve(async (request) => {
       return json({ error: publicUnavailableError }, 400);
     }
 
-    const { data: validPrices, error: priceError } = await supabase
-      .from('ecommerce_product_prices')
-      .select('stripe_price_id,market,is_active')
-      .eq('market', market)
-      .eq('is_active', true)
-      .in('stripe_price_id', requestedPrices);
-
-    if (priceError) throw priceError;
-
-    const validPriceIds = new Set((validPrices || []).map((price) => price.stripe_price_id));
-    const invalidPrice = requestedPrices.find((priceId) => !validPriceIds.has(priceId));
+    const invalidPrice = requestedPrices.find((priceId) => !allowedStripePriceIds.has(priceId));
     if (invalidPrice) {
+      console.warn('taploe_checkout_invalid_price', { invalidPrice, requestedPrices });
       return json({ error: publicUnavailableError }, 400);
     }
 
