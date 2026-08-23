@@ -267,7 +267,7 @@
         sourceUrl: window.location.href
       }));
       const origin = window.location.origin && window.location.origin !== 'null' ? window.location.origin : 'https://www.taploe.com.mx';
-      const response = await fetch(`${supabaseBaseUrl()}/functions/v1/${config.webCartCheckoutFunction || 'create-web-cart-checkout-session'}`, {
+      const response = await fetch(`${supabaseBaseUrl()}/functions/v1/${config.webCartCheckoutFunction || 'taploe-mx-create-web-cart-checkout'}`, {
         method: 'POST',
         headers: {
           apikey: config.supabaseAnonKey,

@@ -247,7 +247,7 @@ begin
 end $$;
 
 -- Las órdenes y sus items se crean después del pago desde la Edge Function
--- complete-checkout-order usando service_role. No permitas inserts anónimos
+-- taploe-mx-complete-checkout-order usando service_role. No permitas inserts anónimos
 -- directos a orders/order_items desde el carrito.
 do $$
 begin
@@ -267,10 +267,10 @@ begin
 end $$;
 
 -- Webhooks recomendados en Stripe:
--- 1. checkout.session.completed -> apunta a la Edge Function existente stripe-webhook
---    (o a supabase/functions/stripe-checkout-webhook si usas el nombre de este repo).
---    El carrito web crea sesiones con create-web-cart-checkout-session y la inserción
---    completa de orders/order_items ocurre en complete-checkout-order después del
+-- 1. checkout.session.completed -> apunta a la Edge Function
+--    taploe-mx-stripe-checkout-webhook.
+--    El carrito web crea sesiones con taploe-mx-create-web-cart-checkout y la inserción
+--    completa de orders/order_items ocurre en taploe-mx-complete-checkout-order después del
 --    redirect exitoso, verificando la sesión con STRIPE_SECRET_KEY.
 -- 2. checkout.session.async_payment_succeeded -> opcional si habilitas métodos de pago
 --    asíncronos.

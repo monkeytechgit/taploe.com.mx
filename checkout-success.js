@@ -79,7 +79,7 @@
         ...item,
         logo: await uploadLogo(item)
       })));
-      const response = await fetch(`${supabaseBaseUrl()}/functions/v1/${config.webCartCompleteFunction || 'complete-checkout-order'}`, {
+      const response = await fetch(`${supabaseBaseUrl()}/functions/v1/${config.webCartCompleteFunction || 'taploe-mx-complete-checkout-order'}`, {
         method: 'POST',
         headers: {
           apikey: config.supabaseAnonKey,
