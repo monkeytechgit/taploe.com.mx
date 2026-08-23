@@ -1,0 +1,31 @@
+# Taploe robots.txt
+# Sitio publico en espanol: https://www.taploe.com.mx/
+# Las paginas transaccionales tambien usan meta noindex en el HTML.
+
+User-agent: *
+
+# Permitir el rastreo del sitio publico y los recursos necesarios para renderizar.
+Allow: /
+Allow: /assets/
+Allow: /assets/images/
+Allow: /style.css
+Allow: /site.js
+Allow: /cart.js
+Allow: /quote-requests.js
+Allow: /product-pages.js
+Allow: /checkout-success.js
+Allow: /ecommerce-config.js
+
+# Excluir paginas de carrito y resultado de checkout.
+Disallow: /carrito.html
+Disallow: /compra-exitosa.html
+Disallow: /compra-cancelada.html
+
+# Excluir archivos y carpetas tecnicas que no forman parte del sitio publico.
+Disallow: /supabase/
+Disallow: /.git/
+Disallow: /.DS_Store
+Disallow: /*.sql$
+
+Sitemap: https://www.taploe.com.mx/sitemap.xml
+Host: www.taploe.com.mx

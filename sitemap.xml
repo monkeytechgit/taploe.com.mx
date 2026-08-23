@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.taploe.com.mx/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.taploe.com.mx/assets/images/principal-taploe.webp</image:loc>
+      <image:title>Tarjetas NFC y perfiles digitales Taploe en México</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.taploe.com.mx/catalogo.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.taploe.com.mx/assets/images/producto-tarjeta-nfc.webp</image:loc>
+      <image:title>Catálogo de tarjetas NFC Taploe México</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.taploe.com.mx/tarjeta-nfc.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.taploe.com.mx/assets/images/producto-tarjeta-nfc.webp</image:loc>
+      <image:title>Tarjeta de presentación NFC Taploe</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.taploe.com.mx/tarjeta-nfc-metalica.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.taploe.com.mx/assets/images/producto-tarjeta-nfc-metalica.webp</image:loc>
+      <image:title>Tarjeta de presentación NFC metálica Taploe</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.taploe.com.mx/tarjeta-nfc-resenas-google.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.taploe.com.mx/assets/images/producto-resenas-google.webp</image:loc>
+      <image:title>Tarjeta NFC para reseñas de Google</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.taploe.com.mx/tarjeta-nfc-instagram.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.taploe.com.mx/assets/images/producto-instagram.webp</image:loc>
+      <image:title>Tarjeta NFC para Instagram</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.taploe.com.mx/tarjeta-nfc-facebook.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.taploe.com.mx/assets/images/producto-facebook.webp</image:loc>
+      <image:title>Tarjeta NFC para Facebook</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.taploe.com.mx/tarjeta-nfc-tripadvisor.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.taploe.com.mx/assets/images/producto-tripadvisor.webp</image:loc>
+      <image:title>Tarjeta NFC para TripAdvisor</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.taploe.com.mx/tarjeta-digital.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.taploe.com.mx/assets/images/producto-perfil-digital.webp</image:loc>
+      <image:title>Tarjeta digital Taploe</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.taploe.com.mx/precios.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.taploe.com.mx/para-equipos.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.taploe.com.mx/preguntas-frecuentes.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.taploe.com.mx/contacto.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.taploe.com.mx/privacidad.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.taploe.com.mx/terminos.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+</urlset>
