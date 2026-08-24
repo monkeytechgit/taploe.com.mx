@@ -13,15 +13,15 @@
       },
       nfc_metalica: {
         productId: 'prod_V7vOh1Cf5NKlkk',
-        priceId: 'price_1U7oYYE9Iq6fzuQIbWruOCN8',
-        unitPrice: 10,
+        priceId: 'price_1U7fXIE9Iq6fzuQIWgd9UP52',
+        unitPrice: 1150,
         quantityMode: 'manual'
       },
       google_reviews: {
         productId: 'prod_V7vTSs02zTQ82G',
         quantityMode: 'package',
         packages: {
-          sencilla: { priceId: 'price_1U7oXJE9Iq6fzuQIhYOg86xl', totalPrice: 10, unitPrice: 10, quantity: 1 },
+          sencilla: { priceId: 'price_1U7fc7E9Iq6fzuQIvpAYImou', totalPrice: 600, unitPrice: 600, quantity: 1 },
           doble: { priceId: 'price_1U7fc7E9Iq6fzuQI7xiu5UdH', totalPrice: 900, unitPrice: 450, quantity: 2 },
           paquete: { priceId: 'price_1U7fc7E9Iq6fzuQIPTVWWjsk', totalPrice: 1400, unitPrice: 280, quantity: 5 },
           'mega-pack': { priceId: 'price_1U7fc7E9Iq6fzuQIlatja3Ta', totalPrice: 2300, unitPrice: 230, quantity: 10 }
