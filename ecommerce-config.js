@@ -13,8 +13,8 @@
       },
       nfc_metalica: {
         productId: 'prod_V7vOh1Cf5NKlkk',
-        priceId: 'price_1U7fXIE9Iq6fzuQIWgd9UP52',
-        unitPrice: 1150,
+        priceId: 'price_1U7oYYE9Iq6fzuQIbWruOCN8',
+        unitPrice: 10,
         quantityMode: 'manual'
       },
       google_reviews: {

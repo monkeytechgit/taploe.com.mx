@@ -28,7 +28,7 @@ const json = (body: unknown, status = 200) => new Response(JSON.stringify(body),
 const publicCheckoutError = 'No pudimos preparar el pago seguro en este momento. Intenta de nuevo o contáctanos para ayudarte.';
 const publicUnavailableError = 'Este producto no está disponible temporalmente. Intenta de nuevo más tarde o contáctanos para ayudarte.';
 const allowedStripePriceIds = new Set([
-  'price_1U7fXIE9Iq6fzuQIWgd9UP52',
+  'price_1U7oYYE9Iq6fzuQIbWruOCN8',
   'price_1U7fYjE9Iq6fzuQI8c9m6T75',
   'price_1U7oXJE9Iq6fzuQIhYOg86xl',
   'price_1U7fc7E9Iq6fzuQI7xiu5UdH',
