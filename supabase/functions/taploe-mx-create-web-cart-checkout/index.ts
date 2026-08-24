@@ -96,6 +96,7 @@ Deno.serve(async (request) => {
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       line_items: lineItems,
+      adaptive_pricing: { enabled: false },
       client_reference_id: checkoutRef,
       billing_address_collection: 'required',
       shipping_address_collection: { allowed_countries: ['MX'] },
