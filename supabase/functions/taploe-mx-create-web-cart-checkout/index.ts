@@ -30,7 +30,7 @@ const publicUnavailableError = 'Este producto no está disponible temporalmente.
 const allowedStripePriceIds = new Set([
   'price_1U7fXIE9Iq6fzuQIWgd9UP52',
   'price_1U7fYjE9Iq6fzuQI8c9m6T75',
-  'price_1U7fc7E9Iq6fzuQIvpAYImou',
+  'price_1U7oXJE9Iq6fzuQIhYOg86xl',
   'price_1U7fc7E9Iq6fzuQI7xiu5UdH',
   'price_1U7fc7E9Iq6fzuQIPTVWWjsk',
   'price_1U7fc7E9Iq6fzuQIlatja3Ta',
