@@ -101,7 +101,7 @@
         "publisher": {
           "@id": "https://www.taploe.com.mx/#organization"
         },
-        "dateModified": "2026-08-05",
+        "dateModified": "2026-08-24",
         "primaryImageOfPage": {
           "@id": "https://www.taploe.com.mx/assets/images/producto-resenas-google.webp#primaryimage"
         },
@@ -178,7 +178,41 @@
           "highPrice": "2300",
           "offerCount": "4",
           "availability": "https://schema.org/InStock",
-          "url": "https://www.taploe.com.mx/tarjeta-nfc-resenas-google.html"
+          "url": "https://www.taploe.com.mx/tarjeta-nfc-resenas-google.html",
+          "itemCondition": "https://schema.org/NewCondition",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "MXN"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "MX"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 5,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 2,
+                "maxValue": 2,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "MX",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+            "merchantReturnLink": "https://www.taploe.com.mx/terminos.html"
+          }
         }
       }
     ]
