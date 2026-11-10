@@ -44,9 +44,44 @@
     button.setAttribute('aria-current', 'true');
   };
   if (gallery) {
-    gallery.querySelectorAll('[data-gallery-image], [data-gallery-video]').forEach((button) => {
+    const thumbs = () => Array.from(gallery.querySelectorAll('[data-gallery-image], [data-gallery-video]'));
+    thumbs().forEach((button) => {
       button.addEventListener('click', () => selectGalleryButton(button));
     });
+    const step = (dir) => {
+      const list = thumbs();
+      if (!list.length) return;
+      const index = Math.max(0, list.findIndex((item) => item.getAttribute('aria-current') === 'true'));
+      const next = list[(index + dir + list.length) % list.length];
+      selectGalleryButton(next);
+      next.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+    };
+    gallery.querySelector('[data-gallery-prev]')?.addEventListener('click', () => step(-1));
+    gallery.querySelector('[data-gallery-next]')?.addEventListener('click', () => step(1));
+    const stage = gallery.querySelector('[data-gallery-stage]');
+    let touchX = null;
+    stage?.addEventListener('touchstart', (event) => { touchX = event.touches[0].clientX; }, { passive: true });
+    stage?.addEventListener('touchend', (event) => {
+      if (touchX === null) return;
+      const delta = event.changedTouches[0].clientX - touchX;
+      if (Math.abs(delta) > 45 && !gallery.querySelector('video[data-gallery-main]')) step(delta < 0 ? 1 : -1);
+      touchX = null;
+    });
+    const zoom = gallery.querySelector('[data-gallery-zoom]');
+    const lightbox = document.querySelector('[data-gallery-lightbox]');
+    if (zoom && lightbox && typeof lightbox.showModal === 'function') {
+      const lightboxImage = lightbox.querySelector('img');
+      zoom.addEventListener('click', () => {
+        const current = gallery.querySelector('[data-gallery-main]');
+        if (!current || current.tagName === 'VIDEO') return;
+        lightboxImage.src = current.currentSrc || current.src;
+        lightboxImage.alt = current.alt || '';
+        lightbox.showModal();
+      });
+      lightbox.addEventListener('click', (event) => {
+        if (event.target === lightbox || event.target.closest('[data-lightbox-close]')) lightbox.close();
+      });
+    }
   }
 
   const configurator = document.querySelector('[data-product-configurator]');
@@ -66,12 +101,10 @@
     selectedFileAlt: 'Archivo de logotipo seleccionado',
     cartStatus: (product) => `${product} se agregó al carrito.`
   };
-  const money = (value) => new Intl.NumberFormat(locale, {
-    style: 'currency',
-    currency,
+  const money = (value) => '$' + new Intl.NumberFormat(locale, {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0
-  }).format(Number(value || 0));
+  }).format(Number(value || 0)) + ' ' + currency;
   const form = configurator.querySelector('[data-product-form]');
   const uploadPanel = configurator.querySelector('[data-upload-panel]');
   const designInputs = configurator.querySelectorAll('input[name="design"]');
@@ -85,12 +118,15 @@
   const quantityInput = configurator.querySelector('[data-quantity]');
   const reviewLinkInput = configurator.querySelector('[data-review-link]');
   const packageInputs = configurator.querySelectorAll('[data-package-option]');
-  const priceDisplay = configurator.querySelector('[data-product-price-display]');
+  const priceDisplays = document.querySelectorAll('[data-product-price-display]');
+  const compareDisplays = document.querySelectorAll('[data-product-compare-display]');
+  const saveDisplays = document.querySelectorAll('[data-product-save-display]');
+  const buyNow = configurator.querySelector('[data-buy-now]');
   const minus = configurator.querySelector('[data-quantity-minus]');
   const plus = configurator.querySelector('[data-quantity-plus]');
   const status = configurator.querySelector('[data-form-status]');
   const submit = configurator.querySelector('.product-submit');
-  const mainImage = configurator.closest('.product-detail')?.querySelector('[data-gallery-main]');
+  const mainImage = document.querySelector('[data-gallery] [data-gallery-image]');
   const showCartLoading = () => {
     let loader = document.querySelector('[data-cart-loading]');
     if (!loader) {
@@ -204,9 +240,14 @@
   if (removeUpload) removeUpload.addEventListener('click', clearFile);
 
   const clampQuantity = (value) => Math.min(99, Math.max(1, Number(value) || 1));
-  if (minus) minus.addEventListener('click', () => { quantityInput.value = clampQuantity(Number(quantityInput.value) - 1); });
-  if (plus) plus.addEventListener('click', () => { quantityInput.value = clampQuantity(Number(quantityInput.value) + 1); });
-  if (quantityInput) quantityInput.addEventListener('change', () => { quantityInput.value = clampQuantity(quantityInput.value); });
+  const setQuantity = (value) => {
+    if (!quantityInput) return;
+    quantityInput.value = clampQuantity(value);
+    updatePrice();
+  };
+  if (minus) minus.addEventListener('click', () => setQuantity(Number(quantityInput.value) - 1));
+  if (plus) plus.addEventListener('click', () => setQuantity(Number(quantityInput.value) + 1));
+  if (quantityInput) quantityInput.addEventListener('change', () => setQuantity(quantityInput.value));
 
   const getPackageConfig = () => {
     const input = selectedPackage();
@@ -223,13 +264,34 @@
     };
   };
 
-  const updatePackagePrice = () => {
+  // Base price of one single card, used to show the honest "regular" comparison price.
+  const basePrice = Number(configurator.dataset.productBasePrice || configurator.dataset.productPrice || 0);
+  function currentTotals() {
+    const units = clampQuantity(quantityInput?.value);
     const pack = getPackageConfig();
-    if (!pack || !priceDisplay) return;
-    priceDisplay.textContent = money(pack.totalPrice);
-  };
-  packageInputs.forEach((input) => input.addEventListener('change', updatePackagePrice));
-  updatePackagePrice();
+    if (pack) {
+      const cards = pack.quantity * units;
+      return { units, pack, cards, total: pack.totalPrice * units, regular: basePrice * cards };
+    }
+    const unitPrice = Number(productConfig.unitPrice || configurator.dataset.productPrice || 0);
+    return { units, pack: null, cards: units, total: unitPrice * units, regular: unitPrice * units };
+  }
+  function updatePrice() {
+    const { total, regular } = currentTotals();
+    priceDisplays.forEach((node) => { node.textContent = money(total); });
+    const saving = regular > total ? Math.round((1 - total / regular) * 100) : 0;
+    compareDisplays.forEach((node) => {
+      node.textContent = money(regular);
+      node.hidden = saving <= 0;
+    });
+    saveDisplays.forEach((node) => {
+      const label = node.querySelector('[data-save-label]') || node;
+      label.textContent = `Ahorra ${saving}%`;
+      node.hidden = saving <= 0;
+    });
+  }
+  packageInputs.forEach((input) => input.addEventListener('change', updatePrice));
+  updatePrice();
 
   const logoPayload = () => {
     const file = fileInput?.files?.[0];
@@ -243,6 +305,7 @@
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
+    const goToCheckout = Boolean(event.submitter && event.submitter.hasAttribute('data-buy-now'));
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
@@ -255,17 +318,19 @@
       return;
     }
 
-    const original = submit.textContent;
+    const original = submit.innerHTML;
     submit.disabled = true;
+    if (buyNow) buyNow.disabled = true;
     submit.classList.add('is-loading');
     submit.textContent = labels.adding;
     if (status) status.textContent = '';
-    const hideCartLoading = showCartLoading();
+    const hideCartLoading = goToCheckout ? () => {} : showCartLoading();
 
-    const pack = getPackageConfig();
-    const quantity = pack?.quantity || clampQuantity(quantityInput?.value);
+    const totals = currentTotals();
+    const pack = totals.pack;
+    const quantity = totals.cards;
     const unitPrice = pack?.unitPrice || Number(productConfig.unitPrice || configurator.dataset.productPrice);
-    const totalPrice = pack?.totalPrice || unitPrice * quantity;
+    const totalPrice = totals.total;
     const reviewLink = reviewLinkInput?.value || '';
     const itemId = window.crypto?.randomUUID ? window.crypto.randomUUID() : `item-${Date.now()}-${Math.random().toString(16).slice(2)}`;
     const item = {
@@ -282,7 +347,8 @@
       totalPrice,
       packageQuantity: pack?.quantity || '',
       packageUnitTotal: pack?.totalPrice || '',
-      packageUnits: pack ? 1 : '',
+      packageUnits: pack ? totals.units : '',
+      promo: 'Promo 2026: +1 tarjeta extra de regalo',
       package: pack?.label || '',
       packageKey: pack?.key || '',
       design,
@@ -290,7 +356,7 @@
       reviewLink,
       reviewLinks: parseReviewLinks(reviewLink),
       logo: logoPayload(),
-      imageUrl: mainImage?.getAttribute('src') || '',
+      imageUrl: mainImage?.dataset.galleryImage || '',
       productUrl: window.location.href,
       addedAt: new Date().toISOString()
     };
@@ -301,6 +367,10 @@
     const cart = JSON.parse(localStorage.getItem(cartKey) || '[]');
     cart.push(item);
     localStorage.setItem(cartKey, JSON.stringify(cart));
+    if (goToCheckout) {
+      window.location.href = 'carrito.html';
+      return;
+    }
     window.dispatchEvent(new CustomEvent('taploe:cart-updated', { detail: { open: true, item } }));
     window.dispatchEvent(new CustomEvent('taploe:cart-open'));
     hideCartLoading();
@@ -310,8 +380,10 @@
     submit.textContent = labels.added;
     setTimeout(() => {
       submit.disabled = false;
+      if (buyNow) buyNow.disabled = false;
       submit.classList.remove('is-added');
-      submit.textContent = original;
+      submit.innerHTML = original;
+      updatePrice();
     }, 2200);
   });
 })();

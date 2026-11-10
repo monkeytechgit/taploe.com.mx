@@ -417,6 +417,9 @@
   </script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="catalog-page">
@@ -460,7 +463,7 @@
           </div>
         </div>
         <a href="para-equipos.html">Para equipos</a>
-        <a href="precios.html">Precios</a>
+        <a href="precios.html">Precios</a><a href="blog.html">Blog</a>
       </nav>
 
       <div class="header-actions">
@@ -485,144 +488,19 @@
         <a href="tarjeta-nfc-tripadvisor.html">TripAdvisor</a>
         <a href="para-equipos.html">Para equipos</a>
         <a href="precios.html">Precios</a>
+        <a href="blog.html">Blog</a>
         <a href="https://app.taploe.com/login?locale=es-MX">Iniciar sesión</a>
       </div>
     </nav>
   </header>
+  <div class="promo-marquee" role="region" aria-label="Promociones de Taploe"><div class="promo-marquee__track"><div class="promo-marquee__group"><span class="promo-marquee__item">🎁 <strong>Promo 2026:</strong> te enviamos 1 tarjeta extra de regalo en cada pedido</span><span class="promo-marquee__item">Configuramos tu tarjeta antes de enviarla</span><span class="promo-marquee__item">Funciona con NFC y código QR</span><span class="promo-marquee__item">Pago único, sin mensualidades</span><span class="promo-marquee__item">Compatible con iPhone y Android</span><span class="promo-marquee__item">Tarjetas para Google, Instagram, Facebook, TripAdvisor y más</span><span class="promo-marquee__item">Envío gratis a todo México</span></div><div class="promo-marquee__group" aria-hidden="true"><span class="promo-marquee__item">🎁 <strong>Promo 2026:</strong> te enviamos 1 tarjeta extra de regalo en cada pedido</span><span class="promo-marquee__item">Configuramos tu tarjeta antes de enviarla</span><span class="promo-marquee__item">Funciona con NFC y código QR</span><span class="promo-marquee__item">Pago único, sin mensualidades</span><span class="promo-marquee__item">Compatible con iPhone y Android</span><span class="promo-marquee__item">Tarjetas para Google, Instagram, Facebook, TripAdvisor y más</span><span class="promo-marquee__item">Envío gratis a todo México</span></div></div></div>
 
   <main id="contenido">
     <section class="catalog-section">
       <div class="container">
-        <div class="catalog-heading">
-          <h1>Catálogo de tarjetas NFC<span class="accent">.</span></h1>
-          <p>Elige el producto que quieres configurar y entra a su vista principal.</p>
-        </div>
-
-        <div class="catalog-toolbar" aria-label="Filtros del catálogo">
-          <div class="catalog-filters">
-            <button class="catalog-filter is-active" type="button" data-filter="todos">Todos</button>
-            <button class="catalog-filter" type="button" data-filter="tarjetas">Tarjetas NFC</button>
-            <button class="catalog-filter" type="button" data-filter="perfil">Perfiles digitales</button>
-            <button class="catalog-filter" type="button" data-filter="resenas">Reseñas</button>
-            <button class="catalog-filter" type="button" data-filter="redes">Redes sociales</button>
-          </div>
-
-          <label class="catalog-search">
-            <span class="sr-only">Buscar producto o categoría</span>
-            <i class="fa fa-search" aria-hidden="true"></i>
-            <input type="search" id="catalog-search" placeholder="Buscar producto o categoría...">
-          </label>
-        </div>
-
-        <div class="catalog-grid" id="catalog-grid">
-          <article class="catalog-card" data-category="tarjetas" data-search="tarjeta nfc standard estandar perfil digital qr">
-            <a class="catalog-card__image" href="tarjeta-nfc.html" aria-label="Ver Tarjeta NFC">
-              <span class="catalog-badge">Ahorra 30%</span>
-              <img src="assets/images/producto-tarjeta-nfc.webp" alt="Tarjeta NFC Taploe con perfil digital">
-            </a>
-            <div class="catalog-card__body">
-              <div class="catalog-card__top">
-                <h2>Tarjeta NFC</h2>
-                <div class="catalog-price">
-                  <span>Pago único</span>
-                  <strong>$800 MXN</strong>
-                </div>
-              </div>
-              <p>Tarjeta NFC personalizada con <strong>perfil digital incluido.</strong></p>
-              <a class="button button-primary" href="tarjeta-nfc.html">Ver producto <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-
-          <article class="catalog-card" data-category="tarjetas" data-search="tarjeta nfc metalica metálica premium acero perfil digital qr">
-            <a class="catalog-card__image" href="tarjeta-nfc-metalica.html" aria-label="Ver Tarjeta NFC metálica">
-              <span class="catalog-badge">Ahorra 30%</span>
-              <img src="assets/images/producto-tarjeta-nfc-metalica.webp" alt="Tarjeta NFC metálica Taploe con perfil digital">
-            </a>
-            <div class="catalog-card__body">
-              <div class="catalog-card__top">
-                <h2>Tarjeta NFC metálica</h2>
-                <div class="catalog-price">
-                  <span>Pago único</span>
-                  <strong>$1,150 MXN</strong>
-                </div>
-              </div>
-              <p>Tarjeta NFC metálica premium con <strong>perfil digital incluido.</strong></p>
-              <a class="button button-primary" href="tarjeta-nfc-metalica.html">Ver producto <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-
-          <article class="catalog-card" data-category="resenas" data-search="tarjeta google reviews resenas reseñas negocio nfc qr">
-            <a class="catalog-card__image" href="tarjeta-nfc-resenas-google.html" aria-label="Ver Tarjeta NFC para reseñas de Google">
-              <span class="catalog-badge">Ahorra 30%</span>
-              <img src="assets/images/producto-google-reviews.webp" alt="Tarjeta NFC Taploe para recibir reseñas de Google">
-            </a>
-            <div class="catalog-card__body">
-              <div class="catalog-card__top">
-                <h2>Tarjeta Google</h2>
-                <div class="catalog-price">
-                  <span>Desde</span>
-                  <strong>$600 MXN</strong>
-                </div>
-              </div>
-              <p>Tarjeta NFC para recibir reseñas de Google con <strong>NFC y código QR.</strong></p>
-              <a class="button button-primary" href="tarjeta-nfc-resenas-google.html">Ver producto <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-
-          <article class="catalog-card" data-category="redes" data-search="tarjeta instagram red social perfil negocio nfc qr">
-            <a class="catalog-card__image" href="tarjeta-nfc-instagram.html" aria-label="Ver Tarjeta NFC para Instagram">
-              <span class="catalog-badge">Ahorra 30%</span>
-              <img src="assets/images/producto-instagram.webp" alt="Tarjeta NFC Taploe para abrir perfil de Instagram">
-            </a>
-            <div class="catalog-card__body">
-              <div class="catalog-card__top">
-                <h2>Tarjeta Instagram</h2>
-                <div class="catalog-price">
-                  <span>Desde</span>
-                  <strong>$600 MXN</strong>
-                </div>
-              </div>
-              <p>Tarjeta NFC para compartir tu perfil de Instagram con <strong>NFC y código QR.</strong></p>
-              <a class="button button-primary" href="tarjeta-nfc-instagram.html">Ver producto <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-
-          <article class="catalog-card" data-category="redes" data-search="tarjeta facebook red social pagina página negocio nfc qr">
-            <a class="catalog-card__image" href="tarjeta-nfc-facebook.html" aria-label="Ver Tarjeta NFC para Facebook">
-              <span class="catalog-badge">Ahorra 30%</span>
-              <img src="assets/images/producto-facebook.webp" alt="Tarjeta NFC Taploe para abrir página de Facebook">
-            </a>
-            <div class="catalog-card__body">
-              <div class="catalog-card__top">
-                <h2>Tarjeta Facebook</h2>
-                <div class="catalog-price">
-                  <span>Desde</span>
-                  <strong>$600 MXN</strong>
-                </div>
-              </div>
-              <p>Tarjeta NFC para compartir tu página de Facebook con <strong>NFC y código QR.</strong></p>
-              <a class="button button-primary" href="tarjeta-nfc-facebook.html">Ver producto <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-
-          <article class="catalog-card" data-category="resenas" data-search="tarjeta tripadvisor trip advisor resenas reseñas negocio nfc qr">
-            <a class="catalog-card__image" href="tarjeta-nfc-tripadvisor.html" aria-label="Ver Tarjeta NFC para TripAdvisor">
-              <span class="catalog-badge">Ahorra 30%</span>
-              <img src="assets/images/producto-tripadvisor.webp" alt="Tarjeta NFC Taploe para recibir reseñas en TripAdvisor">
-            </a>
-            <div class="catalog-card__body">
-              <div class="catalog-card__top">
-                <h2>Tarjeta TripAdvisor</h2>
-                <div class="catalog-price">
-                  <span>Desde</span>
-                  <strong>$600 MXN</strong>
-                </div>
-              </div>
-              <p>Tarjeta NFC para recibir reseñas en TripAdvisor con <strong>NFC y código QR.</strong></p>
-              <a class="button button-primary" href="tarjeta-nfc-tripadvisor.html">Ver producto <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-        </div>
+        <div class="catalog-heading"><h1>Catálogo de tarjetas NFC<span class="accent">.</span></h1><p>Tarjetas para reseñas, redes sociales y presentación. Pago único, envío gratis y 1 tarjeta extra de regalo en 2026.</p></div>
+        <div class="shop-toolbar"><div class="shop-chips" role="group" aria-label="Filtrar por categoría"><button class="shop-chip is-active" type="button" data-shop-filter="todos" aria-pressed="true">Todas</button><button class="shop-chip" type="button" data-shop-filter="resenas" aria-pressed="false">Reseñas</button><button class="shop-chip" type="button" data-shop-filter="redes" aria-pressed="false">Redes sociales</button><button class="shop-chip" type="button" data-shop-filter="tarjetas" aria-pressed="false">Tarjetas NFC</button></div><div class="shop-tools"><label class="shop-search"><span class="sr-only">Buscar producto</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" id="catalog-search" placeholder="Buscar..."></label><label><span class="sr-only">Ordenar</span><select class="shop-sort" id="catalog-sort"><option value="destacados">Destacados</option><option value="precio-asc">Precio: menor a mayor</option><option value="precio-desc">Precio: mayor a menor</option></select></label><span data-shop-count>6 productos</span></div></div>
+        <div class="shop-grid" id="catalog-grid"><article class="shop-card" data-category="resenas" data-price="600" data-order="1" data-search="tarjeta nfc para reseñas de google google reseñas resenas reviews negocio"><a class="shop-card__media" href="tarjeta-nfc-resenas-google.html" aria-label="Ver Tarjeta NFC para reseñas de Google"><span class="shop-card__badge">Hasta 62% menos</span><img src="assets/images/google-reviews-paso-1.webp" alt="Tarjeta NFC para reseñas de Google" loading="lazy" width="600" height="600"><span class="shop-card__cta">Ver producto <span aria-hidden="true">→</span></span></a><div class="shop-card__body"><span class="shop-card__cat">Reseñas</span><h2><a href="tarjeta-nfc-resenas-google.html">Tarjeta NFC para reseñas de Google</a></h2><div class="shop-card__rating"><span class="stars" aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg></span><b>4.9</b><span class="shop-card__verified">· Clientes verificados</span></div><div class="shop-card__price"><strong>$600 MXN</strong><small>Desde $230 MXN c/u en paquete · Envío gratis</small></div></div></article><article class="shop-card" data-category="redes" data-price="600" data-order="2" data-search="tarjeta nfc para instagram instagram redes seguidores"><a class="shop-card__media" href="tarjeta-nfc-instagram.html" aria-label="Ver Tarjeta NFC para Instagram"><span class="shop-card__badge">Hasta 62% menos</span><img src="assets/images/instagram-paso-1.webp" alt="Tarjeta NFC para Instagram" loading="lazy" width="600" height="600"><span class="shop-card__cta">Ver producto <span aria-hidden="true">→</span></span></a><div class="shop-card__body"><span class="shop-card__cat">Redes sociales</span><h2><a href="tarjeta-nfc-instagram.html">Tarjeta NFC para Instagram</a></h2><div class="shop-card__rating"><span class="stars" aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg></span><b>4.9</b><span class="shop-card__verified">· Clientes verificados</span></div><div class="shop-card__price"><strong>$600 MXN</strong><small>Desde $230 MXN c/u en paquete · Envío gratis</small></div></div></article><article class="shop-card" data-category="redes" data-price="600" data-order="3" data-search="tarjeta nfc para facebook facebook redes pagina página"><a class="shop-card__media" href="tarjeta-nfc-facebook.html" aria-label="Ver Tarjeta NFC para Facebook"><span class="shop-card__badge">Hasta 62% menos</span><img src="assets/images/facebook-paso-1.webp" alt="Tarjeta NFC para Facebook" loading="lazy" width="600" height="600"><span class="shop-card__cta">Ver producto <span aria-hidden="true">→</span></span></a><div class="shop-card__body"><span class="shop-card__cat">Redes sociales</span><h2><a href="tarjeta-nfc-facebook.html">Tarjeta NFC para Facebook</a></h2><div class="shop-card__rating"><span class="stars" aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg></span><b>4.9</b><span class="shop-card__verified">· Clientes verificados</span></div><div class="shop-card__price"><strong>$600 MXN</strong><small>Desde $230 MXN c/u en paquete · Envío gratis</small></div></div></article><article class="shop-card" data-category="resenas" data-price="600" data-order="4" data-search="tarjeta nfc para tripadvisor tripadvisor trip advisor turismo hotel reseñas resenas"><a class="shop-card__media" href="tarjeta-nfc-tripadvisor.html" aria-label="Ver Tarjeta NFC para TripAdvisor"><span class="shop-card__badge">Hasta 62% menos</span><img src="assets/images/tripadvisor-paso-1.webp" alt="Tarjeta NFC para TripAdvisor" loading="lazy" width="600" height="600"><span class="shop-card__cta">Ver producto <span aria-hidden="true">→</span></span></a><div class="shop-card__body"><span class="shop-card__cat">Reseñas</span><h2><a href="tarjeta-nfc-tripadvisor.html">Tarjeta NFC para TripAdvisor</a></h2><div class="shop-card__rating"><span class="stars" aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg></span><b>4.9</b><span class="shop-card__verified">· Clientes verificados</span></div><div class="shop-card__price"><strong>$600 MXN</strong><small>Desde $230 MXN c/u en paquete · Envío gratis</small></div></div></article><article class="shop-card" data-category="tarjetas" data-price="800" data-order="5" data-search="tarjeta de presentación nfc tarjeta presentacion presentación perfil digital contacto"><a class="shop-card__media" href="tarjeta-nfc.html" aria-label="Ver Tarjeta de presentación NFC"><span class="shop-card__badge shop-card__badge--gift">🎁 +1 de regalo</span><img src="assets/images/tarjeta-nfc-muestra.webp" alt="Tarjeta de presentación NFC" loading="lazy" width="600" height="600"><span class="shop-card__cta">Ver producto <span aria-hidden="true">→</span></span></a><div class="shop-card__body"><span class="shop-card__cat">Tarjetas NFC</span><h2><a href="tarjeta-nfc.html">Tarjeta de presentación NFC</a></h2><div class="shop-card__rating"><span class="stars" aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg></span><b>4.9</b><span class="shop-card__verified">· Clientes verificados</span></div><div class="shop-card__price"><strong>$800 MXN</strong><small>Perfil digital incluido · Envío gratis</small></div></div></article><article class="shop-card" data-category="tarjetas" data-price="1150" data-order="6" data-search="tarjeta nfc metálica metalica metálica premium negra presentacion"><a class="shop-card__media" href="tarjeta-nfc-metalica.html" aria-label="Ver Tarjeta NFC metálica"><span class="shop-card__badge shop-card__badge--gift">🎁 +1 de regalo</span><img src="assets/images/tarjeta-nfc-metalica-muestra.webp" alt="Tarjeta NFC metálica" loading="lazy" width="600" height="600"><span class="shop-card__cta">Ver producto <span aria-hidden="true">→</span></span></a><div class="shop-card__body"><span class="shop-card__cat">Tarjetas NFC</span><h2><a href="tarjeta-nfc-metalica.html">Tarjeta NFC metálica</a></h2><div class="shop-card__rating"><span class="stars" aria-hidden="true"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.8L10 14.6l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/></svg></span><b>4.9</b><span class="shop-card__verified">· Clientes verificados</span></div><div class="shop-card__price"><strong>$1,150 MXN</strong><small>Perfil digital incluido · Envío gratis</small></div></div></article></div><p class="shop-empty" data-shop-empty hidden>No encontramos productos con esa búsqueda.</p>
       </div>
     </section>
   </main>
@@ -648,30 +526,46 @@
   </footer>
 
   <script>
-    const filterButtons = document.querySelectorAll(".catalog-filter");
-    const searchInput = document.querySelector("#catalog-search");
-    const catalogCards = document.querySelectorAll(".catalog-card");
-
-    function updateCatalog() {
-      const activeFilter = document.querySelector(".catalog-filter.is-active")?.dataset.filter || "todos";
-      const searchTerm = searchInput.value.trim().toLowerCase();
-
-      catalogCards.forEach((card) => {
-        const matchesFilter = activeFilter === "todos" || card.dataset.category === activeFilter;
-        const matchesSearch = !searchTerm || card.dataset.search.includes(searchTerm) || card.textContent.toLowerCase().includes(searchTerm);
-        card.hidden = !matchesFilter || !matchesSearch;
-      });
-    }
-
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        filterButtons.forEach((item) => item.classList.remove("is-active"));
-        button.classList.add("is-active");
-        updateCatalog();
-      });
-    });
-
-    searchInput.addEventListener("input", updateCatalog);
+    (() => {
+      const grid = document.querySelector('#catalog-grid');
+      if (!grid) return;
+      const cards = Array.from(grid.querySelectorAll('.shop-card'));
+      const chips = document.querySelectorAll('[data-shop-filter]');
+      const sort = document.querySelector('#catalog-sort');
+      const search = document.querySelector('#catalog-search');
+      const count = document.querySelector('[data-shop-count]');
+      const empty = document.querySelector('[data-shop-empty]');
+      const normalize = (value) => (value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const params = new URLSearchParams(location.search);
+      const apply = () => {
+        const filter = document.querySelector('[data-shop-filter].is-active')?.dataset.shopFilter || 'todos';
+        const term = normalize(search?.value);
+        let visible = 0;
+        cards.forEach((card) => {
+          const show = (filter === 'todos' || card.dataset.category === filter) && (!term || normalize(card.dataset.search).includes(term));
+          card.hidden = !show;
+          if (show) visible += 1;
+        });
+        const mode = sort?.value || 'destacados';
+        const sorted = [...cards].sort((a, b) => {
+          if (mode === 'precio-asc') return a.dataset.price - b.dataset.price || a.dataset.order - b.dataset.order;
+          if (mode === 'precio-desc') return b.dataset.price - a.dataset.price || a.dataset.order - b.dataset.order;
+          return a.dataset.order - b.dataset.order;
+        });
+        sorted.forEach((card) => grid.appendChild(card));
+        if (count) count.textContent = `${visible} producto${visible === 1 ? '' : 's'}`;
+        if (empty) empty.hidden = visible > 0;
+      };
+      chips.forEach((chip) => chip.addEventListener('click', () => {
+        chips.forEach((item) => { item.classList.toggle('is-active', item === chip); item.setAttribute('aria-pressed', String(item === chip)); });
+        apply();
+      }));
+      const initial = params.get('categoria');
+      if (initial) document.querySelector(`[data-shop-filter="${initial}"]`)?.click();
+      sort?.addEventListener('change', apply);
+      search?.addEventListener('input', apply);
+      apply();
+    })();
   </script>
   <script src="ecommerce-config.js"></script>
   <script src="cart.js"></script>
