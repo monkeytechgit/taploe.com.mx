@@ -8503,3 +8503,5 @@ button, input, select, textarea { font-family: inherit; }
 .shop-toolbar { margin-bottom: 36px; }
 .blog-list-head { margin-top: clamp(64px, 8vw, 96px); }
 .post-related { padding: clamp(64px, 8vw, 96px) 0; }
+.shop-card h2, .shop-card h3 { font-weight: 700; }
+.shop-card__media img[src*="producto-tarjeta-nfc"] { object-fit: contain; padding: 10px; background: #fff; }
