@@ -265,7 +265,7 @@
   };
 
   // Base price of one single card, used to show the honest "regular" comparison price.
-  const basePrice = Number(configurator.dataset.productBasePrice || configurator.dataset.productPrice || 0);
+  const basePrice = Number(configurator.dataset.productComparePrice || configurator.dataset.productBasePrice || configurator.dataset.productPrice || 0);
   function currentTotals() {
     const units = clampQuantity(quantityInput?.value);
     const pack = getPackageConfig();
@@ -274,7 +274,7 @@
       return { units, pack, cards, total: pack.totalPrice * units, regular: basePrice * cards };
     }
     const unitPrice = Number(productConfig.unitPrice || configurator.dataset.productPrice || 0);
-    return { units, pack: null, cards: units, total: unitPrice * units, regular: unitPrice * units };
+    return { units, pack: null, cards: units, total: unitPrice * units, regular: basePrice * units };
   }
   function updatePrice() {
     const { total, regular } = currentTotals();

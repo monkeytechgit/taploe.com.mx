@@ -8488,3 +8488,18 @@ button, input, select, textarea { font-family: inherit; }
 @media (max-width: 800px) { .shop-card__verified { display: none; } }
 .blog-more[hidden], .post-card[hidden] { display: none; }
 .post-cover img { height: auto; max-height: 560px; }
+
+/* ---------- Spacing refresh: more breathing room ---------- */
+.container { width: min(calc(100% - 96px), var(--container)); }
+@media (max-width: 1100px) { .container { width: min(calc(100% - 64px), var(--container)); } }
+@media (max-width: 640px) { .container { width: calc(100% - 40px); } }
+.promo-marquee + main > section:first-child,
+.promo-marquee + main > article:first-child { padding-top: clamp(48px, 6vw, 88px); }
+.promo-marquee + main > .pdp:first-child { padding-top: clamp(28px, 3vw, 40px); }
+.promo-marquee + main > .post:first-child { padding-top: clamp(36px, 4vw, 56px); }
+.section { padding-top: clamp(56px, 7vw, 96px); padding-bottom: clamp(56px, 7vw, 96px); }
+.pdp-guide { padding: clamp(64px, 8vw, 104px) 0; }
+.catalog-heading { margin-bottom: 36px; }
+.shop-toolbar { margin-bottom: 36px; }
+.blog-list-head { margin-top: clamp(64px, 8vw, 96px); }
+.post-related { padding: clamp(64px, 8vw, 96px) 0; }
