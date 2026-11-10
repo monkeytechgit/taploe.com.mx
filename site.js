@@ -25,6 +25,48 @@
 
   setupProductHoverMenus();
 
+  // Lazy product videos: load and play muted only while visible.
+  const lazyVideos = document.querySelectorAll('video[data-lazy-video]');
+  const loadVideo = (video) => {
+    if (!video.src && video.dataset.src) {
+      video.src = video.dataset.src;
+      video.preload = 'auto';
+    }
+  };
+  const playVideo = (video) => {
+    loadVideo(video);
+    video.muted = true;
+    const attempt = video.play();
+    if (attempt) attempt.catch(() => {});
+  };
+  if (lazyVideos.length) {
+    if ('IntersectionObserver' in window) {
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            if (!video.dataset.userPaused) playVideo(video);
+          } else if (!video.paused) {
+            video.dataset.autoPaused = '1';
+            video.pause();
+          }
+        });
+      }, { threshold: 0.35 });
+      lazyVideos.forEach((video) => {
+        videoObserver.observe(video);
+        video.addEventListener('pause', () => {
+          if (!video.dataset.autoPaused) video.dataset.userPaused = '1';
+          delete video.dataset.autoPaused;
+        });
+        video.addEventListener('play', () => { delete video.dataset.userPaused; });
+      });
+    } else {
+      lazyVideos.forEach(playVideo);
+    }
+    // If the user presses play before the video was loaded.
+    lazyVideos.forEach((video) => video.addEventListener('click', () => loadVideo(video), { once: true }));
+  }
+
   document.querySelectorAll('a[href="iniciar-sesion.html"], a[href="login.html"]').forEach((link) => {
     link.href = appLoginUrl;
   });
